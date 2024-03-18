@@ -79,6 +79,17 @@ func (m *CreateReviewRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetStoreID() <= 0 {
+		err := CreateReviewRequestValidationError{
+			field:  "StoreID",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if _, ok := _CreateReviewRequest_Score_InLookup[m.GetScore()]; !ok {
 		err := CreateReviewRequestValidationError{
 			field:  "Score",
