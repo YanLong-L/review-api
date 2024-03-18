@@ -163,6 +163,8 @@ message AuditAppealReply{
 // 用户评价列表的请求
 message ListReviewByUserIDRequest{
 	int64 userID = 1 [(validate.rules).int64 = {gt: 0}];
+	int32 page = 2 [(validate.rules).int32 = {gt: 0}];
+	int32 size = 3 [(validate.rules).int32 = {gt: 0}];
 }
 
 // 用户评价列表的返回值

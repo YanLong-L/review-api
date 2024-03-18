@@ -1741,6 +1741,28 @@ func (m *ListReviewByUserIDRequest) validate(all bool) error {
 		errors = append(errors, err)
 	}
 
+	if m.GetPage() <= 0 {
+		err := ListReviewByUserIDRequestValidationError{
+			field:  "Page",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
+	if m.GetSize() <= 0 {
+		err := ListReviewByUserIDRequestValidationError{
+			field:  "Size",
+			reason: "value must be greater than 0",
+		}
+		if !all {
+			return err
+		}
+		errors = append(errors, err)
+	}
+
 	if len(errors) > 0 {
 		return ListReviewByUserIDRequestMultiError(errors)
 	}
